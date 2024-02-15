@@ -1,0 +1,11 @@
+char shifted;
+if (character== '1') {
+	shifted = '!';
+}
+else if (character == '2') {
+	shifted = '@';
+}
+.
+.
+.
+
