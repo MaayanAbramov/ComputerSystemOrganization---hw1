@@ -1,0 +1,24 @@
+.global _start
+
+.section .text
+
+  mov $bool, %rax
+  cmpb $1, (%rax)
+  jne bad_exit
+
+  movq $60, %rax
+  movq $0, %rdi
+  syscall
+
+bad_exit:
+  movq $60, %rax
+  movq $1, %rdi
+  syscall
+
+.section .data
+source_array: .int 2, 5, 7, 6, 8
+up_array: .zero 20
+down_array: .zero 20
+bool: .byte 8 
+size: .int 5
+

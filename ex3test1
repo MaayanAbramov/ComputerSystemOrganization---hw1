@@ -1,0 +1,23 @@
+.global _start
+
+.section .text
+
+  mov $bool, %rax
+  cmpb $1, (%rax)
+  jne bad_exit
+
+  movq $60, %rax
+  movq $0, %rdi
+  syscall
+
+bad_exit:
+  movq $60, %rax
+  movq $1, %rdi
+  syscall
+
+.section .data
+source_array: .int 1, -2, 3, -4
+up_array: .zero 16
+down_array: .zero 16
+bool: .byte 8 #1 is true, 0 is false (notice you change it to bool before submission)
+size: .int 4
